@@ -35,7 +35,7 @@ $props		=   array(
 $mail 	= new PHPMailer(true);
 
 $mail->isSMTP();
-$mail->SMTPDebug 	= 	2;
+$mail->SMTPDebug 	= 	0;
 $mail->ContentType	= 	"text/html";  
 $mail->CharSet		=	"UTF-8"; 
 $mail->Encoding 	=	"base64";
@@ -65,15 +65,17 @@ foreach ($BCC_arr as $addr) { $mail->addBCC($addr); }
  *
  */
 
-$startDate	= "2020-06-16";
+$startDate	= "2020-06-14";
 
 $Day0 		= strtotime($startDate);
 $DayN		= strtotime(date("Y-m-d"));
 $N		= ($DayN - $Day0)/60/60/24;
 
+/* 
 echo "Day 0 - " . date('Y-m-d', $Day0) . "\n";
 echo "Day N - " . date('Y-m-d', $DayN) . "\n";
 echo "Day " . $N . "\n";
+ */
 
 $DaySubject	= "Day " . $N . " - " . date("l, j F Y");
 
@@ -86,8 +88,10 @@ $DaySubject	= "Day " . $N . " - " . date("l, j F Y");
  */
 
 
+$daycont		= file_get_contents("Day ".$N.".htm");
+$daycont		= str_replace("11:59pm", date("l") . " 11:59pm", $daycont);
 $Subject		= "Day " . $N;
-$Body			= $DaySubject . "<br><br>" .file_get_contents("Day".$N.".htm");
+$Body			= $DaySubject . "<br><br>" . $daycont;
 
 
 $mail->Subject =  	$Subject;
