@@ -65,10 +65,19 @@ foreach ($BCC_arr as $addr) { $mail->addBCC($addr); }
  *
  */
 
-$Day1			= mktime(0,0,0,6,18,2020); 
+$startDate	= "2020-06-16";
+
+$Day0 		= strtotime($startDate);
+$DayN		= strtotime(date("Y-m-d"));
+$N		= ($DayN - $Day0)/60/60/24;
+
+echo "Day 0 - " . date('Y-m-d', $Day0) . "\n";
+echo "Day N - " . date('Y-m-d', $DayN) . "\n";
+echo "Day " . $N . "\n";
+
+$DaySubject	= "Day " . $N . " - " . date("l, j F Y");
 
 
-$today			= date("l, %j %N %Y");
 
 /*
  * Email Subject and Body
@@ -77,10 +86,8 @@ $today			= date("l, %j %N %Y");
  */
 
 
-$Subject		= "Day 21";
-$Body			= "Body";
-
-
+$Subject		= "Day " . $N;
+$Body			= $DaySubject . "<br><br>" .file_get_contents("Day".$N.".htm");
 
 
 $mail->Subject =  	$Subject;
