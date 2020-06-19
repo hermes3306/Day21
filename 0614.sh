@@ -1,3 +1,3 @@
 #!/bin/bash
 export mbox_home=`pwd`
-php 0614.php
+php /home/pi/code/Day21/0614.php
