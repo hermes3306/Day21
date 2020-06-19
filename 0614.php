@@ -79,6 +79,30 @@ echo "Day " . $N . "\n";
 
 $DaySubject	= "Day " . $N . " - " . date("l, j F Y");
 
+$urls = array(
+	'1'=> "https://www.youtube.com/watch?v=cfxs_WxswWg",
+	'2'=> "https://www.youtube.com/watch?v=T8xl3dR70Wo",
+	'3'=> "https://www.youtube.com/watch?v=aIILihl4iio",
+	'4'=> "https://www.youtube.com/watch?v=YXmW1WwPALA",
+	'5'=> "https://www.youtube.com/watch?v=eul8ae3zi3c",
+	'6'=> "https://www.youtube.com/watch?v=XdrFzwZGhf8",
+	'7'=> "https://www.youtube.com/watch?v=LYzvXOWv7xE",
+	'8'=> "https://www.youtube.com/watch?v=ZBYjoQZxFbg",
+	'9'=> "https://www.youtube.com/watch?v=m_2qPQbkG9c",
+	'10'=> "https://www.youtube.com/watch?v=ivWwg3_fm-c",
+	'11'=> "https://www.youtube.com/watch?v=gZeijoFNA5o",
+	'12'=> "https://www.youtube.com/watch?v=NbfDxK9JpJU",
+	'13'=> "https://www.youtube.com/watch?v=GpDffAW4PZ8",
+	'14'=> "https://www.youtube.com/watch?v=8SmtsqmD9Y0",
+	'15'=> "https://www.youtube.com/watch?v=uuc6fV9cN2g",
+	'16'=> "https://www.youtube.com/watch?v=CRVMX4A1Sp4",
+	'17'=> "https://www.youtube.com/watch?v=ufByNb-8etQ",
+	'18'=> "https://www.youtube.com/watch?v=3OZVy0vZ6Ds",
+	'19'=> "https://www.youtube.com/watch?v=rok9-7a8O64",
+	'20'=> "https://www.youtube.com/watch?v=Fzpj12yMytg,",
+	'21'=> "https://www.youtube.com/watch?v=a-9VqEJhSj4"
+);
+
 
 
 /*
@@ -87,11 +111,11 @@ $DaySubject	= "Day " . $N . " - " . date("l, j F Y");
  *
  */
 
-
+$url			= $urls[$N] ;
 $daycont		= file_get_contents($mbox_home . "/Day ".$N.".htm");
 $daycont		= str_replace("11:59pm", date("l") . " 11:59pm", $daycont);
 $Subject		= "Day " . $N;
-$Body			= $DaySubject . "<br><br>" . $daycont;
+$Body			= $DaySubject . "<br><br>" . $daycont . $url;
 
 
 $mail->Subject =  	$Subject;
