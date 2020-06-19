@@ -96,5 +96,6 @@ $Body			= $DaySubject . "<br><br>" . $daycont;
 
 $mail->Subject =  	$Subject;
 $mail->Body =        	$Body;
+/* $mail->addAttachment($mbox_home . "/Day ".$N.".htm"); */
 $mail->send();
 ?>
