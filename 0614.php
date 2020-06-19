@@ -88,7 +88,7 @@ $DaySubject	= "Day " . $N . " - " . date("l, j F Y");
  */
 
 
-$daycont		= file_get_contents("Day ".$N.".htm");
+$daycont		= file_get_contents($mbox_home . "/Day ".$N.".htm");
 $daycont		= str_replace("11:59pm", date("l") . " 11:59pm", $daycont);
 $Subject		= "Day " . $N;
 $Body			= $DaySubject . "<br><br>" . $daycont;
