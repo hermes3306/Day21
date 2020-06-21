@@ -28,7 +28,7 @@ $props		=   array(
 	'SMTPAuth'   =>   true,
 	'Username'   =>   "At54street@gmail.com",
 	'Password'   =>   "dhtlqtkqjsrkdptj",
-	'setFrom'    =>   "At54street@gmail.com",
+	'setFrom'    =>   "6ave54street@gmail.com",
 	'isHtml'     =>   true,
 );
 
@@ -47,7 +47,7 @@ $mail->SMTPAuth 	=  	$props['SMTPAuth'];
 $mail->Username 	=  	$props['Username'];
 $mail->Password 	=  	$props['Password'];
 
-$mail->setFrom        	($props['setFrom']); 
+$mail->setFrom        	($props['setFrom']);
 $mail->isHTML          	($props['isHtml']);
 
 $TO_arr = explode(",", $TO);
@@ -65,11 +65,17 @@ foreach ($BCC_arr as $addr) { $mail->addBCC($addr); }
  *
  */
 
-$startDate	= "2020-06-14";
+$startDate	= "2020-06-19";
 
 $Day0 		= strtotime($startDate);
 $DayN		= strtotime(date("Y-m-d"));
 $N		= ($DayN - $Day0)/60/60/24;
+
+if($N <1 or $N > 21) {
+	echo "Not started or finished! \n";
+	echo "Day # is " . $N . " \n";
+	exit();
+}
 
 /* 
 echo "Day 0 - " . date('Y-m-d', $Day0) . "\n";
@@ -103,30 +109,6 @@ $urls = array(
 	'21'=> "https://www.youtube.com/watch?v=a-9VqEJhSj4"
 );
 
-$urls2 = array(
-	'1'=>"https://www.youtube.com/watch?v=cfxs_WxswWg&t=303s",
-	'2'=>"https://www.youtube.com/watch?v=zJt8ioKu8PI",
-	'3'=>"https://www.youtube.com/watch?v=aIILihl4iio",
-	'4'=>"https://www.youtube.com/watch?v=YXmW1WwPALA",
-	'5'=>"https://www.youtube.com/watch?v=eul8ae3zi3c",
-	'6'=>"https://www.youtube.com/watch?v=Mc56vqpzH1A",
-	'7'=>"https://www.youtube.com/watch?v=qffk97Hud6g",
-	'8'=>"https://www.youtube.com/watch?v=ZBYjoQZxFbg",
-	'9'=>"https://www.youtube.com/watch?v=FM1snnwX7pw",
-	'10'=>"https://www.youtube.com/watch?v=ivWwg3_fm-c",
-	'11'=>"https://www.youtube.com/watch?v=gZeijoFNA5o",
-	'12'=>"https://www.youtube.com/watch?v=j8dcw90J4M0",
-	'13'=>"https://www.youtube.com/watch?v=GpDffAW4PZ8",
-	'14'=>"https://www.youtube.com/watch?v=oN3JqSmdb74",
-	'15'=>"https://www.youtube.com/watch?v=uuc6fV9cN2g",
-	'16'=>"https://www.youtube.com/watch?v=Q_WHq1fH9gI",
-	'17'=>"https://www.youtube.com/watch?v=ufByNb-8etQ",
-	'18'=>"https://www.youtube.com/watch?v=0yX7JU4wAmM",
-	'19'=>"https://www.youtube.com/watch?v=UktCtFIs35Y",
-	'20'=>"https://www.youtube.com/watch?v=Fzpj12yMytg",
-	'21'=>"https://www.youtube.com/watch?v=a-9VqEJhSj4&t=23s"
-);
-
 
 
 /*
@@ -135,7 +117,7 @@ $urls2 = array(
  *
  */
 
-$url			= $urls2[$N] ;
+$url			= $urls[$N] ;
 $daycont		= file_get_contents($mbox_home . "/Day ".$N.".htm");
 $daycont		= str_replace("11:59pm", date("l") . " 11:59pm", $daycont);
 $Subject		= "Day " . $N;
