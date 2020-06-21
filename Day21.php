@@ -17,7 +17,7 @@ require     $mbox_home . '/vendor/autoload.php';
  *
  */
 
-$props	 = parse_ini_file($mbox_home . '/Hawazin.ini'); 
+$props	 = parse_ini_file($mbox_home . '/Day21.ini'); 
 
 
 $mail 	= new PHPMailer(true);
@@ -54,45 +54,18 @@ if($N <1 or $N > 21) {
 	exit();
 }
 
-/* 
-echo "Day 0 - " . date('Y-m-d', $Day0) . "\n";
-echo "Day N - " . date('Y-m-d', $DayN) . "\n";
-echo "Day " . $N . "\n";
- */
-
 $DaySubject	= "<h2><string>Day " . $N . " - " . date("l, j F Y") . "</strong></h2>";
-
-/*
-$urls = array(
-	'1'=> "https://youtu.be/ifOaXk1Uco8",
-	'2'=> "https://youtu.be/ZVBoxhtrXp8",
-	'3'=> "https://youtu.be/R9tbgpXiWpM",
-	'4'=> "https://youtu.be/gOhO9JbkDjw",
-	'5'=> "https://youtu.be/deCyyYn6ef8",
-	'6'=> "https://youtu.be/bk5tpc_5xW4",
-	'7'=> "https://youtu.be/KYF1JhRG3i8",
-	'8'=> "https://youtu.be/0HMa_KKX33o",
-	'9'=> "https://youtu.be/HEdreScENJU",
-	'10'=> "https://youtu.be/gyt_HyJPRMk",
-	'11'=> "https://youtu.be/wqOqFd7XzWM",
-	'12'=> "https://youtu.be/1J2RM7-ITQE",
-	'13'=> "https://youtu.be/VifbZPkBdP4",
-	'14'=> "https://youtu.be/Ya1AB3yObqk",
-	'15'=> "https://youtu.be/kQMUDi0_vr0",
-	'16'=> "https://youtu.be/CRVMX4A1Sp4",
-	'17'=> "https://youtu.be/X2ve6V5qqSU",
-	'18'=> "https://youtu.be/Hnr62da-sxc",
-	'19'=> "https://youtu.be/Drs8QVTUXmE",
-	'20'=> "https://youtu.be/4GsPEiMi6bs",
-	'21'=> "https://youtu.be/VDq7sp3yXpI"
-);
-*/
 
 $urls = array();
 array_push($urls, "Day0");
-
 foreach ($props['urls']  as $url) { 
 	array_push($urls, $url);
+}
+
+$urls2 = array();
+array_push($urls, "Day0");
+foreach ($props['urls2']  as $url) { 
+	array_push($urls2, $url);
 }
 
 /*
@@ -100,7 +73,7 @@ foreach ($props['urls']  as $url) {
  * 
  *
  */
-$url                    = "<a href='" . $urls[$N] . "'>" . $urls[$N] . "</a>"  ;
+$url                    = "<a href='" . $urls2[$N] . "'>" . $urls[$N] . "</a>"  ;
 $daycont                = file_get_contents($mbox_home . "/cont1/Day".$N.".htm");
 $Subject                = "Day " . $N;
 $Body                   = $daycont . "<br><br>" . $url; 
@@ -111,7 +84,6 @@ $mail->send();
 
 
 /* for test all */
-/*
 for($i=1;$i<=21;$i++) {
 	$url                    = "<a href='" . $urls[$i] . "'>" . $urls[$i] . "</a>"  ;
 	$daycont                = file_get_contents($mbox_home . "/cont1/Day".$i.".htm");
@@ -122,8 +94,6 @@ for($i=1;$i<=21;$i++) {
 	$mail->Body =        	$Body;
 	$mail->send();
 }
-*/
-
 
 
 ?>
