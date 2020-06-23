@@ -17,7 +17,7 @@ require     $mbox_home . '/vendor/autoload.php';
  *
  */
 
-$props	 = parse_ini_file($mbox_home . '/Day21.ini'); 
+$props	 = parse_ini_file($mbox_home . '/init/Day21.ini'); 
 
 
 $mail 	= new PHPMailer(true);

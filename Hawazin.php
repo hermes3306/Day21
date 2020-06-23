@@ -17,7 +17,7 @@ require     $mbox_home . '/vendor/autoload.php';
  *
  */
 
-$props	 = parse_ini_file($mbox_home . '/Hawazin.ini'); 
+$props	 = parse_ini_file($mbox_home . '/init/Hawazin.ini'); 
 
 
 $mail 	= new PHPMailer(true);
